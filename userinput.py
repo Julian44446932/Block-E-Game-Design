@@ -23,4 +23,4 @@ while(GameOn):
     if guess < correct_number:
         print("Sorry, that number was too small, guess again")
     if guess == correct_number:
-        print("You are correct!!") 
+        print("You are correct!!")
