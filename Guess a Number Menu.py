@@ -2,10 +2,12 @@ from multiprocessing.connection import answer_challenge
 import os, random
 from traceback import print_tb
 os.system('cls')
-print("**Guess a number menu**")
-print("Level 1: 1-10")
-print("Level 2: 1-50")
-print("Level 3: 1-100")
+print("____________________")
+print("|Guess a number menu|")
+print("|Level 1: 1-10      |")
+print("|Level 2: 1-50      |")
+print("|Level 3: 1-100     |")
+print("|___________________|")
 difficulty=input("Which level do you want:")
 guess=int(input("Please give a number:"))
 # correctanswer = random.randint(1,10)
