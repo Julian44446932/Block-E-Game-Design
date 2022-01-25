@@ -10,6 +10,7 @@ if guess > correctanswer:
     print("Sorry, your answer was too large.")
 if guess < correctanswer:
     print("Sorry, your answer was too small.")
+    quit()
 
 
 
