@@ -1,22 +1,34 @@
 import os, random
 os.system('cls')
-print('###########W############################')
 
-print('#          Guess A Number Menu         #')
+#Today we are learning to try and except, funtions, elif
 
-print('#                                      #')
+# Let's make menu a function keyword def
+def menu():
+    print('########################################')
 
-print('#         1.  Choices 1-10             #')
+    print('#          Guess A Number Menu         #')
 
-print('#         2.  Choices 1-50             #')
+    print('#                                      #')
 
-print('#         3.  Choices 1-100            #')
+    print('#         1.  Choices 1-10             #')
 
-print('#           Select your choice         #')
+    print('#         2.  Choices 1-50             #')
 
-print('######################################')
+    print('#         3.  Choices 1-100            #')
 
-choice=int(input("Choice: "))
+    print('#           Select your choice         #')
+
+    print('######################################')
+#Checking for correct user input
+menu()  #calling the funciton menu
+check=True
+while check:
+    try:
+         choice=int(input("Choice: "))
+         check = False
+    except ValueError:
+        print("Sorry, wrong choice, please answer 1 to 3 only")
 
 if choice == 1:
 
@@ -49,3 +61,4 @@ while(GameOn):
         print("good luck next time", myNumber)
 
 print("The number to guess was " + str(myNumber))
+os.system('cls')
