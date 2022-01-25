@@ -12,7 +12,7 @@ os.system('cls')
 # userInfo=int(input())
 # print("The number is %.2f" %(userInfo/3))
 guess=int(input("Please give a number"))
-correct_number = random.randint(1,10)
+correct_number = random.ranintt(1,10)
 GameOn=True
 while(GameOn):
 
@@ -23,4 +23,4 @@ while(GameOn):
     if guess < correct_number:
         print("Sorry, that number was too small, guess again")
     if guess == correct_number:
-        print("You are correct!!")
+        print("You are correct!!") 
