@@ -31,21 +31,19 @@ check=True
 while check:
     try:
          choice=int(input("Choice: "))
-         check = False
+         check=False
     except ValueError:
         print("Sorry, wrong choice, please answer 1 to 3 only")
 
-if choice == 1:
-
-    myNumber= random.randint(1,10)
-
+if int(choice) > 3:
+    print ("that's not a level try again")
+    quit()
+elif choice == 1:
+     myNumber= random.randint(1,10)
 elif choice == 2:
-
     myNumber= random.randint(1,50)
-
 elif choice == 3:
-
-    myNumber= random.randint(1,100)
+     myNumber= random.randint(1,100)
 
 print(choice)
 
