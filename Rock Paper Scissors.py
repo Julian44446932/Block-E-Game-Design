@@ -7,6 +7,8 @@
 # Loop yes or no to reset the game
 # Failsafe for if the input a letter instead of a number
 # Misspelling scenario failsafe
+import os, random
+os.system=('cls')
 def menu():
     print("<**************************>")
     print("<       WELCOME TO         >")
@@ -14,6 +16,11 @@ def menu():
     print("<          PAPER           >")
     print("<          SCISORS         >")
     print("<**************************>")
+    print("<In this Game, 1 = Rock, 2 = Paper, and 3 = Scisors>")
+    print("                                                    ")
+rockpaperscissors=random.randint(1,3)
+
+
 
 
 menu()
