@@ -7,6 +7,7 @@
 # Loop yes or no to reset the game
 # Failsafe for if the input a letter instead of a number
 # Misspelling scenario failsafe
+from multiprocessing.sharedctypes import Value
 import os, random
 os.system=('cls')
 def menu():
@@ -17,40 +18,73 @@ def menu():
     print("<          SCISORS         >")
     print("<**************************>")
     print("<In this Game, 1 = Rock, 2 = Paper, and 3 = Scisors>")
-    print("         Select 1, 2, or 3.                 ")
+    print("         Select r, p, or s                ")
     print("                                                    ")
+
 menu()
-choice=int(input("Choice: "))
-check=True
-while check:
-    try:
-        choice=int(input("Choice:  "))
-        check=False
-    except ValueError:
-        print("Sorry, wrong choice, please answer 1, 2, or 3 only.")
-    
-
-if int(choice) > 3:
-    print("Enter valid level please.")
-elif choice == 1:
-    myNumber= random.randint(1,3)
-elif choice == 2:
-    myNumber= random.randint(1,3)
-elif choice == 3:
-    myNumber= random.randint(1,3) 
-
-print(choice)
+userGuess= input("What is your choice:")
 GameOn=True
+ValueError!=int
+# check=True
+# while check:
+#     try:
+# choice=int(input("Choice:  "))
+#         check=False
+#     except ValueError:
+#         print("Sorry, wrong choice, please answer r, p, or s only.")
 
-while(GameOn):
-    userGuess=int(input("Give me a number "))
-    if myNumber ==userGuess:
-        print("You won!!")
-        GameOn=False
-    else:
-        print("Good luck next time", myNumber)
-print("The number to guess was "+str(myNumber))
-os.system=('cls')
+myNumber= random.randint(1,3) 
+
+while GameOn==True:
+    if int(userGuess) == 1 and int(myNumber)==2:
+        print("You Won! Rock beats paper!!!")
+        quit()
+    if int(userGuess) == 1 and int(myNumber)==3:
+        print("You Lost!! Rock beats scissors!!")
+        quit()
+    if int(userGuess) == 1 and int(myNumber)==1:
+        print("You tied. We both picked rock!!")
+        quit()
+    if int(userGuess) == 2 and int(myNumber)==2:
+        print("You tied. We both picked paper!!")
+        quit()
+    if int(userGuess) == 2 and int(myNumber)==3:
+        print("You lost!! Scisors beats paper!!")
+        quit()
+    if int(userGuess) == 2 and int(myNumber)==1:
+        print("You won!! Paper beats rock!")
+        quit()
+    if int(userGuess) == 3 and int(myNumber)==2:
+        print("You won!! Scisors beats paper!")
+        quit()
+    if int(userGuess) == 3 and int(myNumber)==3:
+        print("We tied. We both picked paper!")
+        quit()
+    if int(userGuess) == 3 and int(userGuess)==1:
+        print("You lost!! Rocks beats scissors")
+        quit()
+
+
+
+
+
+
+    #     print("You Lost!!!")
+    # if myNumber == 2:
+    #     print("You Tied!!!")
+    # if myNumber == 3:
+    #     print("You won!!")
+
+
+# while(GameOn):
+#     userGuess=int(choice)
+#     if myNumber ==userGuess:
+#         print("You won!!")
+#         GameOn=False
+#     else:
+#         print("Good luck next time", myNumber)
+# print("You beat the computer.")
+# os.system=('cls')
 
 
 
