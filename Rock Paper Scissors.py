@@ -45,7 +45,7 @@ GameOn=True
 while(GameOn):
     userGuess=int(input("Give me a number "))
     if myNumber ==userGuess:
-        print("You got it!!")
+        print("You won!!")
         GameOn=False
     else:
         print("Good luck next time", myNumber)
