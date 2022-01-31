@@ -9,6 +9,7 @@
 # Misspelling scenario failsafe
 from multiprocessing.sharedctypes import Value
 import os, random
+from urllib import response
 os.system=('cls')
 def menu():
     print("<**************************>")
@@ -36,33 +37,108 @@ ValueError!=int
 myNumber= random.randint(1,3) 
 
 while GameOn==True:
-    if int(userGuess) == 1 and int(myNumber)==2:
+    if ValueError:
+        print("You can't choose that! TRy again.")
+        repeat=input("Do you want to try again (y for yes,n for no):")
+        if repeat=="y":
+            os.system('cls')
+            menu()
+            myNumber=random.randint(1,3)
+            userGuess=input ("What is your choice:")
+        elif repeat=="n":
+            GameOn=False
+            quit()
+    elif int(userGuess) == 1 and int(myNumber)==2:
         print("You Won! Rock beats paper!!!")
-        quit()
-    if int(userGuess) == 1 and int(myNumber)==3:
+        repeat=input("Do you want to try again (y for yes,n for no):")
+        if repeat=="y":
+            os.system('cls')
+            menu()
+            myNumber=random.randint(1,3)
+            userGuess=input ("What is your choice:")
+        elif repeat=="n":
+            GameOn=False
+            quit()
+    elif int(userGuess) == 1 and int(myNumber)==3:
         print("You Lost!! Rock beats scissors!!")
-        quit()
-    if int(userGuess) == 1 and int(myNumber)==1:
+        repeat=input("Do you want to try again (y for yes,n for no):")
+        if repeat=="y":
+            os.system('cls')
+            menu()
+            myNumber=random.randint(1,3)
+            userGuess=input ("What is your choice:")
+        elif repeat=="n":
+            GameOn=False
+            quit()
+    elif int(userGuess) == 1 and int(myNumber)==1:
         print("You tied. We both picked rock!!")
-        quit()
-    if int(userGuess) == 2 and int(myNumber)==2:
+        repeat=input("Do you want to try again (y for yes,n for no):")
+        if repeat=="y":
+            os.system('cls')
+            menu()
+            myNumber=random.randint(1,3)
+            userGuess=input ("What is your choice:")
+        elif repeat=="n":
+            GameOn=False
+            quit()
+    elif int(userGuess) == 2 and int(myNumber)==2:
         print("You tied. We both picked paper!!")
-        quit()
-    if int(userGuess) == 2 and int(myNumber)==3:
+        repeat=input("Do you want to try again (y for yes,n for no):")
+        if repeat=="y":
+            os.system('cls')
+            menu()
+            myNumber=random.randint(1,3)
+            userGuess=input ("What is your choice:")
+        elif repeat=="n":
+            GameOn=False
+            quit()
+    elif int(userGuess) == 2 and int(myNumber)==3:
         print("You lost!! Scisors beats paper!!")
         quit()
-    if int(userGuess) == 2 and int(myNumber)==1:
+    elif int(userGuess) == 2 and int(myNumber)==1:
         print("You won!! Paper beats rock!")
-        quit()
-    if int(userGuess) == 3 and int(myNumber)==2:
+        repeat=input("Do you want to try again (y for yes,n for no):")
+        if repeat=="y":
+            os.system('cls')
+            menu()
+            myNumber=random.randint(1,3)
+            userGuess=input ("What is your choice:")
+        elif repeat=="n":
+            GameOn=False
+            quit()
+    elif int(userGuess) == 3 and int(myNumber)==2:
         print("You won!! Scisors beats paper!")
-        quit()
-    if int(userGuess) == 3 and int(myNumber)==3:
+        repeat=input("Do you want to try again (y for yes,n for no):")
+        if repeat=="y":
+            os.system('cls')
+            menu()
+            myNumber=random.randint(1,3)
+            userGuess=input ("What is your choice:")
+        elif repeat=="n":
+            GameOn=False
+            quit()
+    elif int(userGuess) == 3 and int(myNumber)==3:
         print("We tied. We both picked paper!")
-        quit()
-    if int(userGuess) == 3 and int(userGuess)==1:
+        repeat=input("Do you want to try again (y for yes,n for no):")
+        if repeat=="y":
+            os.system('cls')
+            menu()
+            myNumber=random.randint(1,3)
+            userGuess=input ("What is your choice:")
+        elif repeat=="n":
+            GameOn=False
+            quit()
+    elif int(userGuess) == 3 and int(userGuess)==1:
         print("You lost!! Rocks beats scissors")
-        quit()
+        repeat=input("Do you want to try again (y for yes,n for no):")
+        if repeat=="y":
+            os.system('cls')
+            menu()
+            myNumber=random.randint(1,3)
+            userGuess=input ("What is your choice:")
+        elif repeat=="n":
+            GameOn=False
+            quit()
 
 
 
