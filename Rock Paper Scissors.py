@@ -17,13 +17,50 @@ def menu():
     print("<          SCISORS         >")
     print("<**************************>")
     print("<In this Game, 1 = Rock, 2 = Paper, and 3 = Scisors>")
+    print("         Select 1, 2, or 3.                 ")
     print("                                                    ")
-rockpaperscissors=random.randint(1,3)
-
-
-
-
 menu()
+choice=int(input("Choice: "))
+check=True
+while check:
+    try:
+        choice=int(input("Choice:  "))
+        check=False
+    except ValueError:
+        print("Sorry, wrong choice, please answer 1, 2, or 3 only.")
+    
+
+if int(choice) > 3:
+    print("Enter valid level please.")
+elif choice == 1:
+    myNumber= random.randint(1,3)
+elif choice == 2:
+    myNumber= random.randint(1,3)
+elif choice == 3:
+    myNumber= random.randint(1,3) 
+
+print(choice)
+GameOn=True
+
+while(GameOn):
+    userGuess=int(input("Give me a number "))
+    if myNumber ==userGuess:
+        print("You got it!!")
+        GameOn=False
+    else:
+        print("Good luck next time", myNumber)
+print("The number to guess was "+str(myNumber))
+os.system=('cls')
+
+
+
+
+
+
+
+
+
+
 
 # user='paper'
 # computer = 1
@@ -36,4 +73,3 @@ menu()
 #     user=int(2)
 # elif 's' in user:
 #     user=int(3)
-
