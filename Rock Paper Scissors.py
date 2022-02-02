@@ -19,7 +19,7 @@ def menu():
     print("<          SCISORS         >")
     print("<**************************>")
     print("<In this Game, 1 = Rock, 2 = Paper, and 3 = Scisors>")
-    print("         Select r, p, or s                ")
+    print("         Select 1, 2, or 3              ")
     print("                                                    ")
 
 menu()
