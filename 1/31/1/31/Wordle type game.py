@@ -1,4 +1,4 @@
-##JulianMeyer
+#JulianMeyer
 #02/08/22
 #Word game with 3 levels
 #1. Fruits
@@ -26,77 +26,67 @@ fruits=["bananas", "grapes", "watermelon", 'oranges', 'tomatoes', 'mangos', "kiw
 # print(word)
 level=input("Select 1, 2, or 3  ")
 
-if level==1:
-    guess=""
-    word1=random.choice(fruits)
-    def guessFunction():
-        global guess
-        check=True
-        while check:
-            try:
-                guess=input("enter a letter to guess the word ")
-                if guess.isalpha() and len(guess)==1:
-                    check=False
-            except ValueError:
-                print("only one letter please")
-    gameOn=True
-    tries=0
-    letterGuessed=""
-if level==2:
-    guess=""
-    word2=random.choice(animals)
-    def guessFunction():
-        global guess
-        check=True
-        while check:
-            try:
-                guess=input("enter a letter to guess the word ")
-                if guess.isalpha() and len(guess)==1:
-                    check=False
-            except ValueError:
-                print("only one letter please")
-        gameOn=True
-        tries=0
-        letterGuessed=""
+guess=""
 
-if level==3:
-    guess=""
-    word3=random.choice(computerparts)
-    def guessFunction():
-        global guess
-        check=True
-        while check:
-            try:
-                guess=input("enter a letter to guess the word ")
-                if guess.isalpha() and len(guess)==1:
-                    check=False
-            except ValueError:
-                print("only one letter please")
-        gameOn=True
-        tries=0
-        letterGuessed=""
+word=""
 
-while gameOn:
-    guessFunction()
-    letterGuessed += guess #letterGuessed + guess
-    if guess not in word1:
-        tries +=1
-        print(tries) #for testing delete game is ready
-    countLetter=0
-    for letter in word1:
-        if letter in letterGuessed:
-            print(letter, end= " ")
-            countLetter +=1
+
+def userguess():
+    global word, check
+    check = True
+    while True:
+        if level=="1":
+            word=random.choice(fruits)  
+            check=False 
+        elif level=="2":
+            word=random.choice(animals)
+            check=False
+        elif level=="3":
+            word=random.choice(computerparts)
+            check=False
         else:
-            print("_", end=" ")
-    if tries > 6:
-        print("\n Sorry run out chances ")
-        #playgame() ask if they want to play again
-    if countLetter == len(word1):
-        print("you guessed it!")
-        #Calculate score do it
-        #play game()
-    
+            level=input("Select 1, 2, or 3  ")
+
+
+
+def guessFunction():
+    global guess
+    check=True
+    while check:
+        try:
+            guess=input("enter a letter to guess the word ")
+            if guess.isalpha() and len(guess)==1:
+                check=False
+        except ValueError:
+            print("only one letter please")
+
+
+def userguess():
+    tries=0
+    guess=random.choice
+    gameOn = True
+    while gameOn:
+        guessFunction()
+        guess += guess #letterGuessed + guess
+        if guess not in word:
+            tries +=1
+            print(tries) #for testing delete game is ready
+        countLetter=0
+        for letter in word:
+            if letter in guess:
+                print(letter, end= " ")
+                countLetter +=1
+            else:
+                print("_", end=" ")
+        if tries > 6:
+            print("\n Sorry run out chances ")
+            #playgame() ask if they want to play again
+        if countLetter == len(word):
+            print("you guessed it!")
+            #Calculate score do it
+            #play game()
+
+
 
 
 
