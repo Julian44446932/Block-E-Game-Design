@@ -9,12 +9,14 @@ import os, random
 from tabnanny import check
 os.system('cls')
 def menu():
+    global level
     print("<<<<< Menu >>>>>")
     print("=> 1) Fruits")
     print("=> 2) Animals")
     print("=> 3) Computer Parts")
     print("                    ")
     print("                    ")
+    level=input("Select 1, 2, or 3  ")
 menu()
 computerparts=['screen', 'keys', 'motherboard', 'cpu', 'harddisk', 'videocard', 'powersupply', 'ssd']
 animals=["turtle", "cat", 'dog', 'mouse', 'horse', 'wolf', 'fish', 'shark', 'dolphin', 'frog', 'eagle', 'condor']
@@ -24,14 +26,13 @@ fruits=["bananas", "grapes", "watermelon", 'oranges', 'tomatoes', 'mangos', "kiw
 # print(randy)
 # word=fruits[randy]
 # print(word)
-level=input("Select 1, 2, or 3  ")
 
 guess=""
 
 word=""
 
 
-def userguess():
+def selectWord():
     global word, check
     check = True
     while True:
@@ -61,7 +62,7 @@ def guessFunction():
             print("only one letter please")
 
 
-def userguess():
+def playGame():
     tries=0
     guess=random.choice
     gameOn = True
@@ -85,6 +86,13 @@ def userguess():
             print("you guessed it!")
             #Calculate score do it
             #play game()
+
+def Main():
+    menu()
+    selectWord()
+    playGame()
+Main()
+
 
 
 
