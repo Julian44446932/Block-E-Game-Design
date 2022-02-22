@@ -52,11 +52,10 @@ player2=[]
 # you could print it again here just to see how it shuffle
 #loop to devide the cards to each player
 def splitcards():
-    for l in range(26):
-        if l%2==0:
-            player1.append(deck[l])
+        if 2==0:
+            player1.append(deck[1])
         else:
-            player2.append(deck[l])
+            player2.append(deck[1])
 
 
 # print("player1 ",player1)
@@ -66,8 +65,10 @@ def splitcards():
 
     #ask user to hit a key to release cards
 def playgame():
+    global click
     carddecks()
     splitcards()
+    numberofcards = 0
     halfDeck=int(len(deck)/2)
     plyr1=0
     plyr2=0    
@@ -77,11 +78,13 @@ def playgame():
         print("     "+player1[i]+"      "+player2[i])
         if player1[i]>player2[i]:
             plyr1 +=1
+            numberofcards += 1
         elif player1[i]<player2[i]:
             plyr2 +=1
+            numberofcards - 1
         elif player1[i]<player2[i]:
-            plyr1 +=0
-            plyr2 +=0
+            plyr1 + 0
+            plyr2 + 0
         print("Player I: "+str(plyr1)+"     Player II: "+ str(plyr2))
 
     if plyr1>plyr2:
@@ -90,3 +93,6 @@ def playgame():
         print("Player two won the game "+str(plyr2)+" to "+str(plyr1))
 
 playgame()
+
+#after a single round have the cards won all given to the winner
+#
