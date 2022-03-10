@@ -46,3 +46,4 @@ while run:
     p.draw.rect(screen,(red),square2)
  
     p.display.update()
+# colors={'red':[255,0,0],'blue':[0,0,255]}
