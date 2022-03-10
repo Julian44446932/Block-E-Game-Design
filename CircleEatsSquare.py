@@ -40,7 +40,7 @@ square=pygame.Rect(xs,ys,wbox,hbox)
 screen=pygame.display.set_mode((WIDTH,HEIGHT))
 pygame.display.set_caption('Circle eats Square')
 
-#define colors3
+#define colors37
 colors={'white':[255,255,255], 'red':[255,0,0], 'aqua':[102,153, 255],
 'orange':[255,85,0],'purple':[48,25,52],'navy':[5,31,64],'pink':[200,3,75]}
 
@@ -64,11 +64,14 @@ while check:
         square.y -= move
     if keys[pygame.K_s]:
         square.y += move   
+        keys=pygame.key.get_pressed() #this returns a list
+
 #Finish circle
     if keys[pygame.K_LEFT] and xc >=rad:
         xc -= move #substract 5 from the x value
     pygame.draw.rect(screen, sq_color, square)
     pygame.draw.circle(screen, cr_color, (xc,yc), rad)
+#I was confused on the movement of the circle, will fix it in class
 
     pygame.display.update()
     pygame.time.delay(10)
