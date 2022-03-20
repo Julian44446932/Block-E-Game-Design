@@ -13,6 +13,7 @@
 # K_d                   right square
 # K_w                   up square
 # K_s                   down square
+#K_SPACE FOR JUMP
 #initialize pygame
 import os, random, time, pygame
 os.system('cls')
@@ -45,7 +46,9 @@ colors= {'white':[255,255,255],'red':[255,0,0],'blueish':[102, 153, 255], 'orang
 background = colors.get('pink')
 sq_color = colors.get('navy')
 cr_color = colors.get('white')
-
+MAX=10
+jumpCount=MAX
+JUMP=False
 while check:
     # pygame.draw.circle(screen, cr_color, (xc, yc), radius)
     screen.fill(background)
@@ -58,21 +61,41 @@ while check:
         square.x -= move #subtract 5 from the x value
     if keys[pygame.K_d] and square.x < WIDTH - (wbox+move):
         square.x += move 
-    if keys[pygame.K_w] and square.y >= move:
-        square.y -= move
-    if keys[pygame.K_s] and square.y < HEIGHT - (hbox+move):
-        square.y += move
+    #Jumping part
+    if not JUMP:
+        if keys[pygame.K_w] and square.y >= move:
+            square.y -= move
+        if keys[pygame.K_s] and square.y < HEIGHT - (hbox+move):
+            square.y += move
+            if keys[pygame.K_SPACE]:
+                JUMP=True
     #finished circle
-    if keys[pygame.K_LEFT] and xc >=radius:
+    if keys[pygame.K_LEFT] and xc >=(radius+move):
            xc -= move
-    if keys[pygame.K_RIGHT] and xc < WIDTH - radius+move:
+    if keys[pygame.K_RIGHT] and xc < WIDTH - (radius+move):
            xc += move
-    if keys[pygame.K_UP] and yc >=radius:
+    if keys[pygame.K_UP] and yc >=radius+move:
            yc -= move
     if keys[pygame.K_DOWN] and yc < HEIGHT - (radius+move):
            yc += move
+    checkCollide = square.collidepoint((xc,yc))
+    if checkCollide:
+        square.x = random.randint(wbox, WIDTH-radius)
+        square.y = random.randint(hbox, HEIGHT-radius)
+        radius+=move
+    else:
+        if jumpCount>=-MAX:
+            square.y -= jumpCount*abs(jumpCount)/2
+            jumpCount-=1
+        else:
+            jumpCount=MAX
+            JUMP=False
+
+
 
     pygame.draw.rect(screen, sq_color, square)
     pygame.draw.circle(screen, cr_color, (xc, yc), radius)
     pygame.display.update()
     pygame.time.delay(10)
+
+    
