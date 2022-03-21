@@ -42,10 +42,27 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('cirlce eats square')
 #define colors
 colors= {'white':[255,255,255],'red':[255,0,0],'blueish':[102, 153, 255], 'orange':[255, 85, 0], 'purple': [48, 25, 52], 'navy': [5,31,64], 'pink':[200, 3, 75]}
-
 background = colors.get('pink')
-sq_color = colors.get('navy')
+randColor=''
 cr_color = colors.get('white')
+def changeColor():
+    global randColor
+    colorCheck=True
+    while colorCheck:
+        randColor=random.choice(list(colors))
+        if randColor==background:
+            print(randColor)
+            print(background)
+            randColor=random.choice(list(colors))
+        else:
+            colorCheck=False
+    #Get colors
+changeColor()
+sq_color = colors.get(randColor)
+
+
+
+
 MAX=10
 jumpCount=MAX
 JUMP=False
@@ -65,10 +82,17 @@ while check:
     if not JUMP:
         if keys[pygame.K_w] and square.y >= move:
             square.y -= move
-        if keys[pygame.K_s] and square.y < HEIGHT - (hbox+move):
+        if keys[pygame.K_s] and square.y < HEIGHT - hbox:
             square.y += move
-            if keys[pygame.K_SPACE]:
-                JUMP=True
+        if keys[pygame.K_SPACE]:
+            JUMP=True
+    else:
+        if jumpCount>=-MAX:
+            square.y -= jumpCount*abs(jumpCount)/2
+            jumpCount-=1
+        else:
+            jumpCount=MAX
+            JUMP=False
     #finished circle
     if keys[pygame.K_LEFT] and xc >=(radius+move):
            xc -= move
@@ -82,14 +106,13 @@ while check:
     if checkCollide:
         square.x = random.randint(wbox, WIDTH-radius)
         square.y = random.randint(hbox, HEIGHT-radius)
+        changeColor()
         radius+=move
-    else:
-        if jumpCount>=-MAX:
-            square.y -= jumpCount*abs(jumpCount)/2
-            jumpCount-=1
-        else:
-            jumpCount=MAX
-            JUMP=False
+    if radius > 200:
+        quit()
+
+      
+    
 
 
 
