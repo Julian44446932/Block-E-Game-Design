@@ -15,15 +15,21 @@
 # K_s                   down square
 #K_SPACE FOR JUMP
 #initialize pygame
+
 import os, random, time, pygame
+from pickle import FALSE, TRUE
 os.system('cls')
+TITLE_FONT=pygame.font.SysFont('comicsans',50) #<-- First pice of text within parenthsis is the name of the font, and the number is the height of the letters
+MENU_FONT=pygame.font.SysFont('comicsans',40)
+INSTRUCTION_FONT=pygame.font.SysFont('proxmanova',35)
 #initialize pygame
 pygame.init()
-
-#declare constants, variables, init, dictionaries
-#suare size
 WIDTH = 700
 HEIGHT = 500
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+#declare constants, variables, init, dictionaries
+#suare size
+
 check = True #for the while loop
 move = 5 #5 pixels
 #square variables
@@ -31,6 +37,8 @@ xs = 20
 ys = 20
 wbox = 30
 hbox = 30
+MAIN=TRUE
+INST=FALSESETT=False
 #circle variables
 radius = 15
 xc = random.randint(15, WIDTH-radius)
@@ -45,6 +53,7 @@ colors= {'white':[255,255,255],'red':[255,0,0],'blueish':[102, 153, 255], 'orang
 background = colors.get('pink')
 randColor=''
 cr_color = colors.get('white')
+sq_color = colors.get(randColor)
 def changeColor():
     global randColor
     colorCheck=True
@@ -57,11 +66,22 @@ def changeColor():
         else:
             colorCheck=False
     #Get colors
+SelectSquare = pygame.Rect(xs,ys,wbox,hbox)
+settingsList=['screen size', 'Background color', 'Font Size', 'Circle Color']
+menuList=['INSTRUCTIONS',"SETTINGS","LEVEL 1","LEVEL 2", "LEVEL 3",'Scoreboard','Exit']
+txty=156.5
+for i in range(len(menuList)):
+    message=menuList[i]
+    ClickText=INSTRUCTION_FONT.render(message,1,(0,169,184))
+    screen.blit(ClickText,(90,txty))
+    pygame.draw.rect(screen,sq_color,SelectSquare)
+    SelectSquare.y+=75
+    txty+=75
 changeColor()
-sq_color = colors.get(randColor)
 
 
-
+settingsList=['screen size', 'Background color', 'Font Size', 'Circle Color']
+menuList=['INSTRUCTIONS',"SETTINGS","LEVEL 1","LEVEL 2", "LEVEL 3",'Scoreboard','Exit']
 
 MAX=10
 jumpCount=MAX
@@ -69,11 +89,20 @@ JUMP=False
 while check:
     # pygame.draw.circle(screen, cr_color, (xc, yc), radius)
     screen.fill(background)
+    MainMenu(menuList)
     for case in pygame.event.get():
         if case.type == pygame.QUIT:
             check = False
 
     keys = pygame.key.get_pressed()
+    if case.type == pygame.MOUSEBUTTONDOWN:
+        mouse_pos= pygame.mouse.get_pos
+        print(mouse_pos)
+    if ((mouse_pos[0]>20 and mouse_pos[0]<60 and mouse_pos[1]>250 and mouse_pos[1]<29:))
+        screen.fill(background)
+        TitleMenu("INSTRUCTIONS")
+
+
     if keys[pygame.K_a] and square.x >= move:
         square.x -= move #subtract 5 from the x value
     if keys[pygame.K_d] and square.x < WIDTH - (wbox+move):

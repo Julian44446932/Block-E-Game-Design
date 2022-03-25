@@ -13,6 +13,7 @@ wbox=30
 hbox=30
 
 # Menu List
+settingsList=['screen size', 'Background color', 'Font Size', 'Circle Color']
 menuList=['INSTRUCTIONS',"SETTINGS","LEVEL 1","LEVEL 2", "LEVEL 3",'Scoreboard','Exit']
 
 colors={'white':[255,255,255], 'red':[255,0,0], 'orange':[255,85,0], 'purple':[48,25,52,],'aqua':[102,193,255], 'pink': [200,3,75], 'black':[0,0,0], 'navy':[5,31,64], 'white':[252,252,252], 'key lime': [198,227,171], 'seabreeze':[46,223,227]}
@@ -73,15 +74,15 @@ TITLE=TITLE_FONT.render("CIRCLE EAT SQUARE GAME",1,(23,123,159))
 #find the text's width to center it within the window
 xt=WIDTH/2-TITLE.get_width()/2
 window.blit(TITLE,(xt,50))
-TextY=156.5
+txty=156.5
 # Create loop to make multiple squares
-for i in range(7):
+for i in range(len(menuList)):
     message=menuList[i]
     ClickText=INSTRUCTION_FONT.render(message,1,(0,169,184))
-    window.blit(ClickText,(90,TextY))
+    window.blit(ClickText,(90,txty))
     pygame.draw.rect(window,SS_Color,SelectSquare)
     SelectSquare.y+=75
-    TextY+=75
+    txty+=75
 
 SelectSquare=pygame.Rect(xMs,yMs,wbox,hbox)
 pygame.display.update()
