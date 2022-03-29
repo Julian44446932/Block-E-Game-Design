@@ -30,7 +30,7 @@ INST=False
 SETT=False
 LEV_I=False
 #List f messages
-MenuList=['Instructions','Settings', " ssfsdf","dasdas",'fdgdfg','asdasd','asdasd']
+MenuList=['Instructions','Continue to Game', "Game Credits","High Score",'Level Selection']
 SettingList=['Screen Size','Font Size','C','BC']
 check=True #for the while loop
 move=5 #pixels
@@ -114,7 +114,37 @@ def changeColor():
 #Making a rand c f the square
 changeColor()
 sq_color=colors.get(randColor)
-
+def instructions():
+    Check=True
+    while Check:
+        #Create the text we want to write
+        text=TITLE_FNT.render('Circle Eat Square Instructions',1,(0,255,0)) #<-- Goes in order of actual written text, thickness, and color of the text
+        instructions=INST_FNT.render("The goal of this game is for the player controlling the",1,(0,0,255))
+        instructions2=INST_FNT.render("circle to catch the player controlling the square.",1,(0,0,255))
+        instructions3=INST_FNT.render("The square controlling player uses WASD to control the",1,(0,0,255))
+        instructions4=INST_FNT.render("square, the circle is controlled by Player 2 with the arrow",1,(0,0,255))
+        instructions4=INST_FNT.render("keys. The square can hit space to get a vertical jump boost.",1,(0,0,255))
+        instructions5=INST_FNT.render("Once a circle reaches a certain size, the circle player wins",1,(0,0,255))
+        instructions6=INST_FNT.render("Try timing youself to trya get your best time as the circle",1,(0,0,255))
+        BackButton=MENU_FNT.render("BACK",1,(0,0,0))
+        # Put our text on screen after coloring the screen
+        screen.fill((255,255,255))
+        #Blit is what shows and writes our text
+        screen.blit(text,(20,50))
+        screen.blit(instructions,(20,200))
+        screen.blit(instructions2,(20,230))
+        screen.blit(instructions3,(20,260))
+        screen.blit(instructions4,(20,290))
+        screen.blit(instructions5,(20,320))
+        screen.blit(instructions6,(20,350))
+        screen.blit(BackButton,(250,500))
+        #Update our display
+        pygame.display.update()
+        # Set a delay for us to see
+        pygame.time.delay(1000)
+        for case in pygame.event.get():
+            if case.type==pygame.QUIT:
+                Check=False
 
 MAX=10
 jumpCount=MAX
@@ -135,6 +165,7 @@ while check:
         if ((mouse_pos[0] >20 and mouse_pos[0] <80) and (mouse_pos[1] >250 and mouse_pos[1] <290))or INST :
             MAIN=False
             screen.fill(background)
+            instructions()
             TitleMenu("INSTRUCTIONS")
             INST=True
 

@@ -38,7 +38,7 @@ ys = 20
 wbox = 30
 hbox = 30
 MAIN=TRUE
-INST=FALSESETT=
+INST=FALSESETT
 #circle variables
 radius = 15
 xc = random.randint(15, WIDTH-radius)
