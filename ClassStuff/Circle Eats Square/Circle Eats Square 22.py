@@ -12,8 +12,10 @@
 # K_s                   down square
 # K_SPACE               jump
 #initialize pygame
-import os, random, time, pygame, math
-from pickle import TRUE
+import os, random, time, pygame, math, datetime
+os.system('cls')
+name=input("What is your name? ")
+
 #initialize pygame
 pygame.init()
 
@@ -25,10 +27,11 @@ xMs=50
 yMs=250
 wb=30
 hb=30
-MAIN=TRUE
+MAIN=True
 INST=False
 SETT=False
 LEV_I=False
+
 #List f messages
 MenuList=['Instructions','Continue to Game', "Game Credits","High Score",'Level Selection']
 SettingList=['Screen Size','Font Size','C','BC']
@@ -86,11 +89,11 @@ def TitleMenu(Message):
 
 squareM=pygame.Rect(xMs,yMs,wb,hb)
 #This is a function uses a parameter
-def MainMenu(Mlist):
+def MainMenu(MenuList):
     txty=243
     squareM.y=250
-    for i in range(len(Mlist)):
-        message=Mlist[i]
+    for i in range(len(MenuList)):
+        message=MenuList[i]
         text=INST_FNT.render(message,1,(51,131,51))
         screen.blit(text,(90,txty))
         pygame.draw.rect(screen,sqM_color, squareM )
@@ -145,9 +148,37 @@ def instructions():
         for case in pygame.event.get():
             if case.type==pygame.QUIT:
                 Check=False
+def keepScore(score):
+    date=datetime.now()
+    print(date.strftime('%m%d%Y'))
+    scoreLine=str(score)+"\t"+date.strftime('%m%d%Y'+"\n")
+    myFile= open('ClassStuff\Instructions.txt')
+    myFile.write(scoreLine)
+    myFile.close
 
-MAX=10
+def playGame():
+    global move #pixels
+    move=4
+    #square variables
+    global xs
+    xs=20
+    global ys
+    ys=20
+    global wbox
+    wbox=30
+    global hbox
+    hbox=30
+    #circle variables
+    global rad
+    rad=15
+    global xc
+    xc=random.randint(rad,WIDTH-rad)
+    ibox=int(rad)
+
+MAX=10 
 jumpCount=MAX
+
+
 JUMP=False
 while check:
     
@@ -168,7 +199,6 @@ while check:
             instructions()
             TitleMenu("INSTRUCTIONS")
             INST=True
-
 #     if keys[pygame.K_a] and square.x >=move:
 #         square.x -= move #substract 5 from the x value
 #     if keys[pygame.K_d] and square.x <WIDTH-wbox:
