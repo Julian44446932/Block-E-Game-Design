@@ -38,7 +38,7 @@ ys = 20
 wbox = 30
 hbox = 30
 MAIN=TRUE
-INST=FALSESETT
+INST=FALSE
 #circle variables
 radius = 15
 xc = random.randint(15, WIDTH-radius)
@@ -68,10 +68,10 @@ def changeColor():
     #Get colors
 SelectSquare = pygame.Rect(xs,ys,wbox,hbox)
 settingsList=['screen size', 'Background color', 'Font Size', 'Circle Color']
-menuList=['INSTRUCTIONS',"SETTINGS","LEVEL 1","LEVEL 2", "LEVEL 3",'Scoreboard','Exit']
+titleMenu=['INSTRUCTIONS',"SETTINGS","LEVEL 1","LEVEL 2", "LEVEL 3",'Scoreboard','Exit']
 txty=156.5
-for i in range(len(menuList)):
-    message=menuList[i]
+for i in range(len(titleMenu)):
+    message=titleMenu[i]
     ClickText=INSTRUCTION_FONT.render(message,1,(0,169,184))
     screen.blit(ClickText,(90,txty))
     pygame.draw.rect(screen,sq_color,SelectSquare)
@@ -89,7 +89,7 @@ JUMP=False
 while check:
     # pygame.draw.circle(screen, cr_color, (xc, yc), radius)
     screen.fill(background)
-    MainMenu(menuList)
+    titleMenu(menuList)
     for case in pygame.event.get():
         if case.type == pygame.QUIT:
             check = False
@@ -98,9 +98,9 @@ while check:
     if case.type == pygame.MOUSEBUTTONDOWN:
         mouse_pos= pygame.mouse.get_pos
         print(mouse_pos)
-    if ((mouse_pos[0]>20 and mouse_pos[0]<60 and mouse_pos[1]>250 and mouse_pos[1]<29:))
+    if mouse_pos[0]>20 and mouse_pos[0]<60 and mouse_pos[1]>250 and mouse_pos[1]<29:
         screen.fill(background)
-        TitleMenu("INSTRUCTIONS")
+        titleMenu("INSTRUCTIONS")
 
 
     if keys[pygame.K_a] and square.x >= move:
