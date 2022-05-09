@@ -10,11 +10,11 @@ GROUNDY = SCREENHEIGHT * 0.8
 GAME_SPRITES = {}
 GAME_SOUNDS = {}
 
-# Bird2=pygame.transform.scale('ClassStuff\Images\FinalGameimages\Sprite #1.png',(65,65))
-# pygame.image.load('ClassStuff\Images\FinalGameimages\Sprite #1.png')
+# Images and sprites were all changed
 PLAYER = 'ClassStuff\Images\FinalGameimages\Mario Sprite (1).png'
 BACKGROUND = 'ClassStuff\Images\FinalGameimages\\bluebg.png'
 PIPE = 'ClassStuff\Images\FinalGameimages\gallery\sprites\\neon-pink-color-solid-background-1920x1080.png'
+# GAMEWIN=pygame.image.load("ClassStuff\Images\FinalGameimages\gallery\sprites\Gucci.png")
 def welcomeScreen():
     """
     Shows welcome images on the s
@@ -45,7 +45,7 @@ def welcomeScreen():
                 FPSCLOCK.tick(FPS)
 
 def mainGame():
-    score = 0
+    score = 0#sw/5 playerx
     playerx = int(SCREENWIDTH/5)
     playery = int(SCREENWIDTH/2)
     basex = 0
@@ -75,17 +75,16 @@ def mainGame():
     playerFlapAccv = -8 # velocity while flapping
     playerFlapped = False # It is true only when the bird is flapping
 
-
+# All sound has been removed from the game
     while True:
         for event in pygame.event.get():
             if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
                 pygame.quit()
                 sys.exit()
-            if event.type == KEYDOWN and (event.key == K_SPACE or event.key == K_UP):
+            if event.type == KEYDOWN and (event.key == K_SPACE or event.key == K_UP or K_w):
                 if playery > 0:
                     playerVelY = playerFlapAccv
                     playerFlapped = True
-                    GAME_SOUNDS['wing'].play()
 
 
         crashTest = isCollide(playerx, playery, upperPipes, lowerPipes, ) # This function will return true if the player is crashed
@@ -97,9 +96,12 @@ def mainGame():
         for pipe in upperPipes:
             pipeMidPos = pipe['x'] + GAME_SPRITES['pipe'][0].get_width()/2
             if pipeMidPos<= playerMidPos < pipeMidPos +4:
-                score +=1
+                score +=20  
                 print(f"Your score is {score}") 
-                GAME_SOUNDS['point'].play()
+        # if score == 300:
+        #     SCREEN.blit (GAME_SPRITES['gamewin'] (0,0))
+        #     pygame.display.update()
+
 
 
         if playerVelY <playerMaxVelY and not playerFlapped:
@@ -148,18 +150,15 @@ def mainGame():
 
 def isCollide(playerx, playery, upperPipes, lowerPipes):
     if playery> GROUNDY - 25  or playery<0:
-        GAME_SOUNDS['hit'].play()
         return True
     
     for pipe in upperPipes:
         pipeHeight = GAME_SPRITES['pipe'][0].get_height()
         if(playery < pipeHeight + pipe['y'] and abs(playerx - pipe['x']) < GAME_SPRITES['pipe'][0].get_width()):
-            GAME_SOUNDS['hit'].play()
             return True
 
     for pipe in lowerPipes:
         if (playery + GAME_SPRITES['player'].get_height() > pipe['y']) and abs(playerx - pipe['x']) < GAME_SPRITES['pipe'][0].get_width():
-            GAME_SOUNDS['hit'].play()
             return True
 
     return False
@@ -169,7 +168,7 @@ def getRandomPipe():
     Generate positions of two pipes(one bottom straight and one top rotated ) for blitting on the screen
     """
     pipeHeight = GAME_SPRITES['pipe'][0].get_height()
-    offset = SCREENHEIGHT/3
+    offset = SCREENHEIGHT/2.5
     y2 = offset + random.randrange(0, int(SCREENHEIGHT - GAME_SPRITES['base'].get_height()  - 1.2 *offset))
     pipeX = SCREENWIDTH + 10
     y1 = pipeHeight - y2 + offset
@@ -200,6 +199,7 @@ if __name__ == "__main__":
         pygame.image.load('ClassStuff\Images\FinalGameimages\gallery\sprites\\7.png').convert_alpha(),
         pygame.image.load('ClassStuff\Images\FinalGameimages\gallery\sprites\8.png').convert_alpha(),
         pygame.image.load('ClassStuff\Images\FinalGameimages\gallery\sprites\9.png').convert_alpha(),
+        pygame.image.load('ClassStuff\Images\FinalGameimages\gallery\sprites\Gucci.png').convert_alpha(),
     )
 
     GAME_SPRITES['message'] =pygame.image.load('ClassStuff\Images\FinalGameimages\gallery\sprites\message3.png').convert_alpha()
@@ -207,13 +207,8 @@ if __name__ == "__main__":
     GAME_SPRITES['pipe'] =(pygame.transform.rotate(pygame.image.load(PIPE).convert_alpha(), 180), 
     pygame.image.load(PIPE).convert_alpha()
     )
+    GAME_SPRITES['gamewin'] =pygame.image.load('ClassStuff\Images\FinalGameimages\gallery\sprites\Gucci.png')
 
-    # Game sounds
-    GAME_SOUNDS['die'] = pygame.mixer.Sound('ClassStuff\Images\FinalGameimages\gallery\\audio\die.wav')
-    GAME_SOUNDS['hit'] = pygame.mixer.Sound('ClassStuff\Images\FinalGameimages\gallery\\audio\hit.wav')
-    GAME_SOUNDS['point'] = pygame.mixer.Sound('ClassStuff\Images\FinalGameimages\gallery\\audio\point.wav')
-    GAME_SOUNDS['swoosh'] = pygame.mixer.Sound('ClassStuff\Images\FinalGameimages\gallery\\audio\swoosh.wav')
-    GAME_SOUNDS['wing'] = pygame.mixer.Sound('ClassStuff\Images\FinalGameimages\gallery\\audio\wing.wav')
 
     GAME_SPRITES['background'] = pygame.image.load(BACKGROUND).convert()
     GAME_SPRITES['player'] = pygame.image.load(PLAYER).convert_alpha()
