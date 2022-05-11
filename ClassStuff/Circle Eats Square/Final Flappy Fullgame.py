@@ -868,8 +868,12 @@ while check:
         if keys[pygame.K_LEFT]:
             SETT=False
             MAIN=True
-            f_SEET=True
+            f_SEET=True 
     if LEV_I:
+        if keys[pygame.K_ESCAPE]:
+            print("Thanks for Playing!!") 
+            pygame.quit()
+
         screen.fill(background)
         lev1()
         LEV_I=False
