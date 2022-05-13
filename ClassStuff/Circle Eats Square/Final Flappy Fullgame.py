@@ -127,16 +127,16 @@ def keepScore(score):
     myFile.write(scoreLine)
     myFile.close()
 def scoreBoard():
-    myFile=open('ClassStuff\CircleEatsSquare\sce.txt', 'r')
-    yi=150
-    stuff= myFile.readlines()
-    myFile.close()
-    stuff.sort()
-    N=len(stuff)-1
-    temp=[]
-    j=0
-    for i in range(N, -1, -1):
-        print(i,stuff[i])
+    print("{score}")
+    # yi=150
+    # stuff= myFile.readlines()
+    # myFile.close()
+    # stuff.sort()
+    # N=len(stuff)-1
+    # temp=[]
+    # j=0
+    # for i in range(N, -1, -1):
+    #     print(i,stuff[i])
         # temp[j]=stuff[i]
         #     j +=1
         # print(temp)
@@ -184,8 +184,8 @@ def lev1():
 
     # Images and sprites were all changed
     PLAYER = 'ClassStuff\Images\FinalGameimages\Mario Sprite (1).png'
-    BACKGROUND = 'ClassStuff\Images\FinalGameimages\\bluebg.png'
-    PIPE = 'ClassStuff\Images\FinalGameimages\gallery\sprites\pink pipe.png'
+    BACKGROUND = 'ClassStuff\Circle Eats Square\\backgroundnew.png'
+    PIPE = 'ClassStuff\Images\FinalGameimages\gallery\sprites\pink pipe2.png'
     # GAMEWIN=pygame.image.load("ClassStuff\Images\FinalGameimages\gallery\sprites\Gucci.png")
     def welcomeScreen():
         """
@@ -401,8 +401,8 @@ def lev2():
 
     # Images and sprites were all changed
     PLAYER = 'ClassStuff\Images\FinalGameimages\Mario Sprite (1).png'
-    BACKGROUND = 'ClassStuff\Images\FinalGameimages\\bluebg.png'
-    PIPE = 'ClassStuff\Images\FinalGameimages\gallery\sprites\pink pipe.png'
+    BACKGROUND = 'ClassStuff\Images\FinalGameimages\gallery\sprites\\Newbg2.png'
+    PIPE = 'ClassStuff\Images\FinalGameimages\gallery\sprites\pink pipe2.png'
     def welcomeScreen():
         """
         Shows welcome images on the s
@@ -614,8 +614,8 @@ def lev3():
 
     # Images and sprites were all changed
     PLAYER = 'ClassStuff\Images\FinalGameimages\Mario Sprite (1).png'
-    BACKGROUND = 'ClassStuff\Images\FinalGameimages\\bluebg.png'
-    PIPE = 'ClassStuff\Images\FinalGameimages\gallery\sprites\pink pipe.png'
+    BACKGROUND = 'ClassStuff\Images\FinalGameimages\gallery\sprites\\new bg3.png'
+    PIPE = 'ClassStuff\Images\FinalGameimages\gallery\sprites\pink pipe2.png'
     def welcomeScreen():
         """
         Shows welcome images on the s
@@ -895,6 +895,10 @@ while check:
         xm=0
         ym=0
     if SCORE and screCk:
+        if keys[pygame.K_LEFT]:
+            SCORE=False
+            MAIN=True
+            first=True
         screen.fill(background)
         TitleMenu("SCOREBOARD")
         scoreBoard()
